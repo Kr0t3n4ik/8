@@ -1,0 +1,18 @@
+auth_users = ['user1', 'user2', 'user3']
+
+
+def login_required(func):
+    def wrapper(user_login):
+        if user_login in auth_users:
+            return func(user_login)
+
+    return wrapper
+
+
+@login_required
+def secret(user_login):
+    print('This is secret message!')
+
+
+secret('user5')
+
